@@ -60,7 +60,7 @@
 
         <section class="secao2">
             <h2>Pedido</h2>
-            <form name="pedido" action="calculacalorias" method="POST">
+            <form action="calculacalorias" method="POST">
                 <table>
                     <thead>
                         <tr >
@@ -76,16 +76,18 @@
                                 Cardapio opcoesCardapio = menu.get(i);
                         %>
                         <tr class="item">
-                            <td><% out.print(opcoesCardapio.getNome()); %></td>
+                            <td><% out.print(opcoesCardapio.getNome());%></td>
                             <td>
-                                <a class="btn-decrementa">-</a>
-                                <input class="quantidade" readonly="" type="text" value="0" min="0" name="quantidade">  
+                             <a class="btn-decrementa">-</a>
+
+                                <input max="100" class="quantidade" value="0" type="number" name="valores">  
+
                                 <a class="btn-incrementa">+</a>
                             </td>
+                           <!-- <td ><input type="number" step="any" name="quantidade_<%= i%>" min ="0" value="0"</td> -->
                             <td class="preco-item"><%out.print(opcoesCardapio.getPreco()); %></td>
                             <td class="calorias-item"><%out.print(opcoesCardapio.getCalorias()); %></td>
                         </tr>  
-
                         <%}%>   
                     </tbody>
                     <tfoot>
@@ -96,6 +98,7 @@
                         </tr>
                     </tfoot>
                 </table>
+                       <!--<input type="submit" name="calcularValores" value="Calcular"> -->
             </form>
         </section>
         <script type="text/javascript" src="calcularCampos.js"></script>

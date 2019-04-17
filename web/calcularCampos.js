@@ -1,7 +1,6 @@
 //incrementa
 var botoesIncrementa = document.querySelectorAll(".btn-incrementa");
-for (let botao of botoesIncrementa)
-{
+for (let botao of botoesIncrementa){
     botao.addEventListener('click', incrementa);
     function incrementa()
     {
@@ -62,20 +61,24 @@ formPedido.addEventListener('submit', function (event) {
 //funções auxiliares
 function pegaPrecoItem(item) {
     var precoItem = item.querySelector('.preco-item');
-    return Number(precoItem.textContent);
+    return formata2Casas(parseFloat(precoItem.textContent));
 }
 
 function adicionaAoTotal(valor) {
     var elementoTotal = document.querySelector("#total");
-    elementoTotal.textContent = valor + Number(elementoTotal.textContent);
+    elementoTotal.textContent = formata2Casas(valor + parseFloat(elementoTotal.textContent));
 }
 
 function pegaQtdCalorias(caloria) {
     var calorias = caloria.querySelector('.calorias-item');
-    return NumberCalorias(calorias.textContent);
+    return Number(calorias.textContent);
 }
 
 function adicionaAoTotalCalorias(totalCalorias) {
     var caloriasTotal = document.querySelector("#totalCalorias");
-    caloriasTotal.textContent = totalCalorias + NumberCalorias(caloriasTotal.textContent);
+    caloriasTotal.textContent = totalCalorias + Number(caloriasTotal.textContent);
+}
+
+function formata2Casas(num){
+    return Math.round(num*100)/100;
 }

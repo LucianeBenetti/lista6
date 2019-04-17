@@ -1,9 +1,9 @@
-
 package Servlet;
 
 import Classes.Cardapio;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,28 +11,32 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CalculaCalorias extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-     
-        String calcular =  request.getParameter("calcular");      
-        String qtdade = request.getParameter("quantidade");
-        int quantidade = Integer.valueOf(qtdade);
-        Cardapio caloriasCardapio = new Cardapio();
-        int totalCalorias = 0;
+
+        ArrayList<Cardapio> quantidadePedido = new ArrayList<Cardapio>();
+        Integer qtdade = 0;
+        Double valor = 0.0;
+        Double valorTotal=0.0;
         
-        System.out.print(quantidade);
-        
-        if (quantidade >0){
-        totalCalorias +=  (caloriasCardapio.getCalorias()) * quantidade;
-        
-         request.setAttribute("totalCalorias", totalCalorias);
-        
-        }   
-        System.out.println(totalCalorias);
-         request.getRequestDispatcher("index.jsp").forward(request, response);
-      
+        for (int i = 0; i < quantidadePedido.size(); i++) {
+            Cardapio valorPedido = quantidadePedido.get(i);
+            qtdade = Integer.parseInt(request.getParameter("quantidade_" + i));
+            System.out.println(qtdade);
+           
+           // valor = valor.getPreco();
+            valorTotal += qtdade * valor;
+        }
+
+       // System.out.println(valorTotal);
+
+        //  if (quantidade >0){
+        //  totalCalorias +=  (caloriasCardapio.getCalorias()) * quantidade;
+        //   request.setAttribute("totalCalorias", totalCalorias);
+        //   }   
+        //   System.out.println(totalCalorias);
+        // request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

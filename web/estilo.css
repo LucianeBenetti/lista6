@@ -48,9 +48,9 @@ tr, td {
     text-align: center;
     border: none;
     display: inline;
-    width: 100px;
-    padding: 5px 5px;
-    margin-left: 10px;
+    width: 30px;
+    padding: 5px 0px;
+    margin-left: 15px;
 }
 form a {
     cursor: pointer;
