@@ -7,17 +7,9 @@
         <servlet-name>XML</servlet-name>
         <servlet-class>Servlet.XML</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>CalculaCalorias</servlet-name>
-        <servlet-class>Servlet.CalculaCalorias</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>XML</servlet-name>
         <url-pattern>/xml</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CalculaCalorias</servlet-name>
-        <url-pattern>/calculacalorias</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
