@@ -18,7 +18,7 @@
     <body>
 
         <header class="buscarMenu">
-            <h3>Clique no link abaixo e acesse nosso cardápio especial de tortas e sobremesas: </h3>
+            <h4>Clique no link abaixo e acesse nosso cardápio especial de tortas e sobremesas: </h4>
             <form action="xml" method="POST"> 
                 <input type="submit" name="conhecerCardapio" value="Conhecer Cardápio">
             </form>
@@ -38,7 +38,6 @@
                         <th>Descricao</th>
                         <th>Calorias</th>
                         <th>Preço</th>
-
                     </tr>
                 </thead>
 
@@ -47,7 +46,7 @@
                         Cardapio opcoesCardapio = menu.get(i);
                 %>
                 <tr>
-                    <td><% out.print(opcoesCardapio.getNome()); %></td>
+                    <td class="nome"><% out.print(opcoesCardapio.getNome()); %></td>
                     <td><% out.print(opcoesCardapio.getDescricao()); %></td>
                     <td><% out.print(opcoesCardapio.getCalorias()); %></td>
                     <td>R$ <% out.print(opcoesCardapio.getPreco()); %></td>
@@ -59,16 +58,17 @@
         </section>
 
         <section class="secao2">
-            <h2>Pedido</h2>
+            <h3>Escolha a quantidade e faça seu Pedido</h3>
             <form action="calculacalorias" method="POST">
                 <table>
                     <thead>
-                        <tr >
+                        <tr>
                             <th>Nome</th>
                             <th>Quantidade</th>
                             <th>Preço por Unidade</th>
                             <th>Calorias por Unidade</th>
-                        </tr>
+                    <br>
+                    </tr>
                     </thead>
                     <tbody>
                         <%
@@ -76,15 +76,12 @@
                                 Cardapio opcoesCardapio = menu.get(i);
                         %>
                         <tr class="item">
-                            <td><% out.print(opcoesCardapio.getNome());%></td>
-                            <td>
-                             <a class="btn-decrementa">-</a>
 
-                                <input max="100" class="quantidade" value="0" type="number" name="valores">  
-
+                            <td classe="nomePedido"><% out.print(opcoesCardapio.getNome());%></td>
+                            <td class="qtdade"> <a class="btn-decrementa">-</a>
+                                <input max="100" class="quantidade" value="0" type="number" readonly="" name="valores">  
                                 <a class="btn-incrementa">+</a>
                             </td>
-                           <!-- <td ><input type="number" step="any" name="quantidade_<%= i%>" min ="0" value="0"</td> -->
                             <td class="preco-item"><%out.print(opcoesCardapio.getPreco()); %></td>
                             <td class="calorias-item"><%out.print(opcoesCardapio.getCalorias()); %></td>
                         </tr>  
@@ -92,13 +89,15 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="2">Total</td>
+                            <td class="total" colspan="2">Total (preço total em R$)</td>
                             <td id="total">0</td>
                             <td id="totalCalorias">0</td>
                         </tr>
                     </tfoot>
                 </table>
-                       <!--<input type="submit" name="calcularValores" value="Calcular"> -->
+                <br>
+                <br>
+                <input type="submit" name="calcularValores" value="Enviar Pedido">
             </form>
         </section>
         <script type="text/javascript" src="calcularCampos.js"></script>
